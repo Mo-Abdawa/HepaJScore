@@ -1,0 +1,15 @@
+services:
+  hepajscore:
+    build: .
+    container_name: hepajscore-v18
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: "${SECRET_KEY:-change-me}"
+      ADMIN_USER: "${ADMIN_USER:-admin}"
+      ADMIN_PASS: "${ADMIN_PASS:-admin}"
+      CONTACT_EMAIL: "${CONTACT_EMAIL:-contact@hepajscore.org}"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./data:/app/data
